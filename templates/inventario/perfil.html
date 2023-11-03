@@ -11,9 +11,36 @@
     <div class="dashboard">
         <div class="usuario-dashboard">
             Dashboard do Usúario (analisando se é possível)
-            <!-- <span>{{ c }}</span> -->
         </div>
     </div>
+    
+        
+        <div class="usuario-inve">
+            <div class="regist-list">
+                {% if not inve %}
+                <h2>* Sem Registros para mostrar no momento. *</h2>
+                {% else %}            
+    
+                <button type="button" onclick="user_inventarios()"><h2>Registros Salvos - {{ inve|length }}</h2></button>
+                <table id="user_inventarios">
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Produto</th>
+                        <th>Valor R$</th>
+                        <th>SubTotal R$</th>
+                    </tr>
+                    {% for i in inve %}
+                    <tr>
+                        <td>{{ i.cliente }}</td>
+                        <td>{{ i.produto }}</td>
+                        <td>R$ {{ i.valorProdutos }}</td>
+                        <td><a href="{% url 'registroView' id=i.id %}">R$ {{ i.subTotal }}</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% endif %}
+            </div>
+        </div>
     
     <div class="usuario-inve">
         <div class="regist-list">
@@ -29,7 +56,7 @@
                 </tr>
                 {% for p in produto %}
                 <tr>
-                    <td>{{ p.produto }}</td>
+                    <td><a href="{% url 'produtoView' id=p.id %}">{{ p.produto }}</a></td>
                     <td>{{ p.create }}</td>
                     <td>R$ {{ p.valorTotal }}</td>
                 </tr>
@@ -55,37 +82,9 @@
                 </tr>
                 {% for c in cliente %}
                 <tr>
-                    <td>{{ c.cliente }}</td>
+                    <td><a href="{% url 'clienteView' id=c.id %}">{{ c.cliente }}</a></td>
                     <td>{{ c.endereco }}</td>
                     <td>{{ c.contato }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-            {% endif %}
-        </div>
-    </div>
-
-    
-    <div class="usuario-inve">
-        <div class="regist-list">
-            {% if not inve %}
-            <h2>* Sem Registros para mostrar no momento. *</h2>
-            {% else %}            
-
-            <button type="button" onclick="user_inventarios()"><h2>Registros Salvos - {{ inve|length }}</h2></button>
-            <table id="user_inventarios">
-                <tr>
-                    <th>Cliente</th>
-                    <th>Produto</th>
-                    <th>Valor R$</th>
-                    <th>SubTotal R$</th>
-                </tr>
-                {% for i in inve %}
-                <tr>
-                    <td>{{ i.cliente }}</td>
-                    <td>{{ i.produto }}</td>
-                    <td>R$ {{ i.valorProdutos }}</td>
-                    <td>R$ {{ i.subTotal }}</td>
                 </tr>
                 {% endfor %}
             </table>

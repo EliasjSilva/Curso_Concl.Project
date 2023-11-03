@@ -1,0 +1,18 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block tittle %} Registro nº {{ iView.id }} {% endblock %}
+
+{% block content %}
+
+{{ iView.produto }}
+{{ iView.cliente }}
+{{ iView.valor_p1 }}
+{{ iView.valor_p2 }}
+{{ iView.valorProdutos }}
+{{ iView.subTotal }}
+{{ iView.combustivel }}
+{{ iView.create_at }}
+{{ iView.notes }}
+
+{% endblock %}

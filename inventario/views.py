@@ -17,17 +17,17 @@ def about(request):
 def user(request):
 
     inve_list =  models.Inventario.objects.all().order_by('-create_at').filter(user=request.user)
-    paginator = Paginator(inve_list, 10)
+    paginator = Paginator(inve_list, 30)
     page = request.GET.get('page')
     inve = paginator.get_page(page)
 
     cliente_list =  models.Cliente.objects.all().order_by('cliente').filter(user=request.user)
-    paginator = Paginator(cliente_list, 10)
+    paginator = Paginator(cliente_list, 30)
     page = request.GET.get('page')
     cliente = paginator.get_page(page)
 
     produto_list =  models.Produto.objects.all().order_by('-valorTotal').filter(user=request.user)
-    paginator = Paginator(produto_list, 10)
+    paginator = Paginator(produto_list, 30)
     page = request.GET.get('page')
     produto = paginator.get_page(page)
 
@@ -89,15 +89,6 @@ def addCliente(request):
 # READING
 @login_required
 def registers(request):
-
-    # search = request.GET.get('search')
-    # if search:
-
-        # registros = models.Inventario.objects.filter(notes__icontains=search, user=resquest.user)
-        # inventario_list =  models.Inventario.objects.all().order_by('-create_at').filter(user=request.user)
-        # paginator = Paginator(inventario_list, 10)
-        # page = request.GET.get('page')
-        # inventario = paginator.get_page(page)
     sDate = request.GET.get('start_date')
     eDate = request.GET.get('end_date')
 
@@ -108,14 +99,30 @@ def registers(request):
         eDate = parse_date(eDate) + datetime.timedelta(1)
         
         inventario_list =  models.Inventario.objects.filter(user=request.user, create_at__range=[sDate, eDate])
-        paginator = Paginator(inventario_list, 10)
+        paginator = Paginator(inventario_list, 20)
         page = request.GET.get('page')
         inventario = paginator.get_page(page)
         return render(request, 'inventario/registros.html', {'inventario':inventario})
         
     else:
         inventario_list =  models.Inventario.objects.all().order_by('-create_at').filter(user=request.user)
-        paginator = Paginator(inventario_list, 10)
+        paginator = Paginator(inventario_list, 20)
         page = request.GET.get('page')
         inventario = paginator.get_page(page)
     return render(request, 'inventario/registros.html', {'inventario': inventario})
+
+
+@login_required
+def clienteView(request, id):
+    cView = models.Cliente.objects.get(id=id)
+    return render(request, 'inventario/clienteProfile.html', {'cView':cView})
+
+@login_required
+def produtoView(request, id):
+    pView = models.Produto.objects.get(id=id)
+    return render(request, 'inventario/produtoView.html', {'pView':pView})
+
+@login_required
+def registroView(request, id):
+    iView = models.Inventario.objects.get(id=id)
+    return render(request, 'inventario/registroView.html', {'iView':iView})

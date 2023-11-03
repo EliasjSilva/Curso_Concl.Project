@@ -1,0 +1,14 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block tittle %} Produto - {{ pView.produto }} {% endblock %}
+
+{% block content %}
+
+{{ pView.produto }}
+{{ pView.valorBase }}
+{{ pView.valorTotal }}
+{{ pView.create }}
+{{ pView.notes }}
+
+{% endblock %}

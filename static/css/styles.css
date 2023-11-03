@@ -271,7 +271,7 @@ header nav {
 
 .perfil .usuario-inve {
     width: 100%;
-    background-color: #2288;
+    background-color: #2286;
     padding: 10px 20px;
     border-radius: 10px;
     margin: 20px 0;
@@ -292,10 +292,28 @@ header nav {
     margin: 20px auto;
     width: 100%;
 }
-.perfil .usuario-inve table th, tr, td {
+.perfil .usuario-inve table th, .usuario-inve table tr, .usuario-inve table td {
     border: 2px solid #fff8;
     padding: 5px;
 }
+#user_produtos, #user_clientes, #user_inventarios {
+    display: none;
+}
+
+.perfil .usuario-inve table tr td a {
+    text-decoration: none;
+    text-shadow: 1px 1px 2px #000;
+    color: #fff;
+}
+.perfil .usuario-inve table tr td a:hover {
+    text-decoration: underline;
+}
+
+/* *** Fieldsets *** */
+
+
+
+
 
 
 

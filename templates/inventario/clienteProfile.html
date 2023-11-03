@@ -1,0 +1,47 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block tittle %} Perfil de {{ cView.cliente }} {% endblock %}
+
+{% block content %}
+
+<h3>{{ cView.cliente }}</h3>
+<div class="user">
+    <fieldset>
+        <legend>Status:</legend>
+            <div class="user-content">
+                <label for=""><span>Experience:</span>
+
+                    {{ cView.observacoes }}
+                </label>
+            </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Personal Data:</legend>
+        <div class="user-content">
+            <label for=""><span>Phone:</span>
+
+                {{ cView.contato }}
+            </label>
+        </div>
+        <div class="user-content">
+            <label for=""><span>Endereço:</span>
+
+                {{ cView.endereco }}
+            </label>
+        </div>
+    </fieldset>
+    
+    <fieldset>
+        <legend>Links:</legend>
+        <div class="user-content">
+            <label for=""><span>Email:</span>
+
+                {{ cView.email }}
+            </label>
+        </div>
+    </fieldset>
+</div>
+
+{% endblock %}

@@ -32,13 +32,13 @@ function filter() {
 
 // Usuário
 function user_produtos(){
-  $('#user_produtos').toggle(50)
+  $('#user_produtos').toggle(10)
 }
 function user_clientes(){
-  $('#user_clientes').toggle(50)
+  $('#user_clientes').toggle(10)
 }
 function user_inventarios(){
-  $('#user_inventarios').toggle(50)
+  $('#user_inventarios').toggle(10)
 }
 
 

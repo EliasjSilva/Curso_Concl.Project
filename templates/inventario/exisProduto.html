@@ -1,0 +1,82 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block tittle %} Cadastrar {% endblock %}
+
+
+{% block content %}
+
+<div class="register">
+    <div class="add">
+        <a href="{% url 'exisProduto' %}">
+            <span><i class="fa-solid fa-plus icon"></i></span>
+            <span>Adicionar Inventario</span>
+        </a>
+    </div>
+    <div class="add">
+        <a href="{% url 'addProduto' %}">
+            <span><i class="fa-solid fa-plus icon"></i></span>
+            <span>Adicionar Produto</span>
+        </a>
+    </div>
+    <div class="add">
+        <a href="{% url 'addCliente' %}">
+            <span><i class="fa-solid fa-plus icon"></i></span>
+            <span>Adicionar Cliente</span>
+        </a>
+    </div>
+</div>
+{% if messages %}
+<ul class="alerta">
+    {% for m in messages %}
+    <li>{{ m }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% block inve %}
+
+<div class="conttBox">
+    <div class="title"><h3>Adicionar Inventario</h3></div>
+    <div class="contt">
+
+        <form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+
+<!-- {{ registrar }}   -->
+          <div class="valor">
+                <div class="item1">
+                    <label for="">Produtos*:</label>
+                    {{ registrar.produto }}
+                </div>
+                <div class="item1">
+                    <label for="">Cliente*:</label>
+                    {{ registrar.cliente}}
+                </div>
+            </div>
+            <div class="valor">
+                <div class="item1">
+                    <label for="">Valor do Produto 1*:</label>
+                    {{ registrar.valor_p1 }}
+                </div>
+                <div class="item1">
+                    <label for="">Valor do Produto 2*:</label>
+                    {{ registrar.valor_p2 }}
+                </div>
+            </div>
+
+            <label for="">Valor do Combustivel*:</label>
+            {{ registrar.combustivel }}
+
+            <label for="">Observações:</label>
+            {{ registrar.notes }}
+            <p>Campos com * são obrigatórios!</p>
+
+            <input type="submit" value="Salvar">
+        </form>
+
+    </div>
+</div>
+
+{% endblock inve %}
+
+
+{% endblock %}

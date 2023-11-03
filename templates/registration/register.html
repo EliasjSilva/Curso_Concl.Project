@@ -1,0 +1,34 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block tittle %} Registar Usúario {% endblock %}
+
+{% block content %}
+<div class="entrar">
+    <form class="login" method="post" autocomplete="off"> {% csrf_token %}
+
+        <h2>Novo Usuário? Boas Vindas!</h2>
+
+        <label for="username">Nome de Usuário:</label>
+        <input type="text" name="username" id="id_username" autocapitalize="none" maxlength="150" placeholder="Digite o nome de Usúario" required autofocus >
+        <span>Obrigatório. 150 caracteres ou menos. Letras, números e @ / . / + / - / _ apenas.</span>
+
+        <label for="id_password1">Digite a Senha:</label>
+        <input type="password" name="password1" id="id_password1" required>
+        <span>Sua senha não pode ser muito parecida com o resto das suas informações pessoais.</span>
+        <span>Sua senha precisa conter pelo menos 8 caracteres.</span>
+        <span>Sua senha não pode ser uma senha comumente utilizada.</span>
+        <span>Sua senha não pode ser inteiramente numérica.</span>
+
+        <label for="id_password2">Confirme sua Senha:</label>
+        <input type="password" name="password2" id="id_password2" required>
+        <span>Digite a mesma senha informada anteriormente, para verificação.</span>
+
+        <input type="submit" value="Cadastrar">
+
+        <p>
+            Já possui cadastro? <a href="/accounts/login/">Fazer Login</a>. 
+        </p>
+    </form>
+</div>
+{% endblock %}

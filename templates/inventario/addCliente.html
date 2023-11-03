@@ -1,0 +1,61 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block tittle %} Cadastrar {% endblock %}
+
+
+{% block content %}
+<div class="register">
+    <div class="add">
+        <a href="{% url 'exisProduto' %}">
+            <span><i class="fa-solid fa-plus icon"></i></span>
+            <span>Adicionar Inventario</span>
+        </a>
+    </div>
+    <div class="add">
+        <a href="{% url 'addProduto' %}">
+            <span><i class="fa-solid fa-plus icon"></i></span>
+            <span>Adicionar Produto</span>
+        </a>
+    </div>
+    <div class="add">
+        <a href="{% url 'addCliente' %}">
+            <span><i class="fa-solid fa-plus icon"></i></span>
+            <span>Adicionar Cliente</span>
+        </a>
+    </div>
+</div>
+{% block inve %}
+    
+        <div class="conttBox">
+            <div class="title"><h3>Cadastrar Cliente</h3></div>
+            <div class="contt">
+
+                <form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+
+                    <!-- {{ cliente }} -->
+                        <label for="">Nome*:</label>
+                        <span>{{ cliente.cliente }}</span>
+                    
+                        <label for="">Telefone:</label>
+                        <span>{{ cliente.contato }}</span>
+
+                        <label for="">Email:</label>
+                        <span>{{ cliente.email }}</span>
+                        
+                        <label for="">Endereço do Cliente:</label>
+                        <span>{{ cliente.endereco }}</span>
+                        
+                        <label for="">Observações sobre o Cliente:</label>
+                        <span>{{ cliente.observacoes }}</span>
+                        <p>Campos com * são obrigatórios!</p>
+                            
+
+                    <input type="submit" value="Adicionar">
+                </form>
+
+            </div>
+        </div>
+{% endblock inve %}
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block tittle %} Registros {% endblock %}
+
+{% block content %}    
+<section class="regist">
+    <div class="header-regist">
+        <div class="pesq">
+            <button onclick="filter()">
+                <span><i class="fa-solid fa-filter icon"></i></span>
+                <span>Filtrar por data</span>
+            </button>
+            <a href="{% url 'exisProduto' %}">
+                <span><i class="fa-solid fa-plus icon"></i></span>
+                <span>Adicionar Novo Registro</span>
+            </a>
+        </div>
+        <div class="search-pesq">
+            <form action="" method="get">
+
+                <!-- <span><input type="text" name="search" id="search" placeholder="Digite o nome do produto"></span> -->
+                <!-- <span><i class="fa-solid fa-magnifying-glass icon"></i></span> -->
+                <div class="date">
+                    <label for="sdate">Data Inicial:</label>
+                    <input id="sdate" type="date" name="start_date">
+                </div>
+                
+                <div class="date">
+                    <label for="edate">Data Final:</label>
+                    <input id="edate" type="date" name="end_date">
+                </div>
+
+                <input type="submit" onclick="filter()" value="OK">
+            </form>
+        </div>
+        
+        <div class="regist-list">
+            {% if not inventario %}
+            <h2>* Sem Registros para mostrar no momento. *</h2>
+            <div class="img"><img src="{% static 'imgs/sema-nada.gif' %}" alt="" style="border-radius: 20px; box-shadow: 3px 3px 5px #000; margin: 50px 0;"></div>
+            {% else %}            
+            
+            {% if messages %}
+            <ul class="alerta">
+                {% for m in messages %}
+                <li>{{ m }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <h2>Registros Recentes</h2>
+
+            <table>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Produto</th>
+                    <th>Adicionado</th>
+                    <th>Valor R$</th>
+                    <!-- <th>Anotações</th> -->
+                </tr>
+                {% for p in inventario %}
+                <tr>
+                    <td>
+                        <!-- <a href="#">
+                            <span><i class="fa-solid fa-eye fa-xl icon"></i></span>
+                        </a> -->
+                        {{ p.cliente }}
+                    </td>
+                    <td>{{ p.produto }}</td>
+                    <td>{{ p.create_at }}</td>
+                    <td>R$ {{ p.valorProdutos }}</td>
+                    <!-- <td>
+                        <a href="#" title="Editar"><i class="fa-solid fa-pen-to-square icon" style="color: #3a3;"></i></a>
+                        <a href="#" title="Exluir"><i class="fa-solid fa-trash icon" style="color: #a22;"></i></a>
+                    </td> -->
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block tittle %} Cadastrar {% endblock %}
+
+
+{% block content %}
+<div class="register">
+    <div class="add">
+        <a href="{% url 'exisProduto' %}">
+            <span><i class="fa-solid fa-plus icon"></i></span>
+            <span>Adicionar Inventario</span>
+        </a>
+    </div>
+    <div class="add">
+        <a href="{% url 'addProduto' %}">
+            <span><i class="fa-solid fa-plus icon"></i></span>
+            <span>Adicionar Produto</span>
+        </a>
+    </div>
+    <div class="add">
+        <a href="{% url 'addCliente' %}">
+            <span><i class="fa-solid fa-plus icon"></i></span>
+            <span>Adicionar Cliente</span>
+        </a>
+    </div>
+</div>
+
+{% block inve %}
+    
+        <div class="conttBox">
+            <div class="title"><h3>Cadastrar Produto</h3></div>
+            <div class="contt">
+
+                <form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+
+                    <!-- {{ produto }} -->
+                    <label for="">Nome do Novo Produto*:</label>
+                    <span>{{ produto.produto }}</span>
+
+                    <label for="">Valor Base*:</label>
+                    <span>{{ produto.valorBase }}</span>
+                    <span>Por Padrão é <strong>1,70</strong>. Para mais informações <button id="info" type="button" onclick="togglePopup()">Clique aqui.</button></span>
+
+                    <div id="contt">
+                        <h4>O que é o Valor Base de um Produto?</h4>
+                        <p>
+                            Basicamente, você pode realizar o cálculo do custo de um produto somando todos os custos e despesas resultantes da produção ou aquisição.
+                        </p>
+                        <button type="button" onclick="togglePopup()">Entendi! Pode fechar.</button>
+                    </div>
+                    
+                    <label for="">Anotoções sobre o Produto:</label>
+                    <span>{{ produto.notes }}</span>
+                    <p>Campos com * são obrigatórios!</p>
+
+                    <input type="submit" value="Adicionar">
+                </form>
+
+            </div>
+        </div>
+    
+{% endblock inve %}
+
+{% endblock %}

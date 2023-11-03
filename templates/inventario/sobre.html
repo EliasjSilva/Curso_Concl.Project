@@ -1,0 +1,40 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block tittle %} Sobre {% endblock %}
+
+{% block content %}
+<section class="sobre-global">
+    <div class="sobre-cont">
+        <article class="sobre">
+            <h3>Sobre o Criador do Projeto:</h3>
+            <div class="img"><img src="{% static 'imgs/elias.jpeg' %}" alt="Imagem de Elias J. Silva" width="200"></div>
+            <p>
+                <span class="text-perfil">Olá, Boas vindas ao meu primeiro projeto em django. Meu nome é <a href="https://github.com/EliasjSilva" target="_blank" title="Github de Elias J. Silva">Elias J. Silva</a>.</span>
+                <br>
+                Nascido em 07 de Abril de 1999, em João Pessoa - PB.
+                <br>
+                Uma pessoa muito calma e paciente, sempre gostou de tecnologia, conheceu as linguagens em 2022 sendo as primeiras para desenvolvimento Front-end (HTML e CSS) e em seguida as linguagens Back-end (Java Script, Python e Ruby).
+                <br>
+                Atualmente estudando ambos com o objetivo de se tornar Desenvolvedor Full-Stack.
+            </p>
+        </article>
+        <article class="sobre">
+            <h4>Sobre o Projeto:</h4>
+            <p>
+                Projeto de conclusão criado durante o curso Jovem Programandor pela Associação Beneficente São José (ABSJ) e em parceria com a SUCESU.
+                <br>
+                Ministrado pelo Professor <a href="https://github.com/MarcioAlex-x" target="_blank" title="Github de Márcio Alex">Márcio Alex</a>
+            </p>
+        </article>
+        <article class="sobre">
+            <h4>Intuito do Projeto:</h4>
+            <p>
+                Por em prática o que foi visto em sala por meio das linguagens: HTML, CSS, Java Script e Python.
+                <br>
+                Bem como as frameworks necessárias: Bootstrap e Django.
+            </p>
+        </article>
+    </div>
+</section>
+{% endblock %}

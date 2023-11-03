@@ -1,0 +1,27 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block tittle %} Login {% endblock %}
+
+{% block content %}
+<div class="entrar">
+    <form class="login" method="post" autocomplete="off"> {% csrf_token %}
+
+        <h2>Boas Vindas</h2>
+
+        <label for="username">Nome de Usuário:</label>
+        <input type="text" name="username" id="username" autocapitalize="none" maxlength="150" placeholder="Digite seu nome de Usúario" required autofocus>
+        <!-- O padrão do login do django é que o nome recebe name = 'username' se colocado inputs-->
+
+        <label for="password">Digite sua Senha:</label>
+        <input type="password" name="password" id="password" required>
+        <!-- e a senha recebe name = 'password' se colocado inputs -->
+
+        <input type="submit" value="Entrar">
+
+        <p>
+            Não possui cadastro? <a href="/accounts/register/">Clique aqui</a>. 
+        </p>
+    </form>
+</div>
+{% endblock %}

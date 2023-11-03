@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block tittle %} Home {% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'imgs/block.png' %}" type="image/x-icon">
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-head">
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}">
+                            <span><i class="fa-solid fa-house fa-2xl icon"></i></span>
+                            <span class="text">Home</span>
+                        </a>
+                    </li>
+                    <!-- {% if not user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'home' %}">
+                            <span><i class="fa-solid fa-right-to-bracket fa-xl icon"></i></span>
+                            <span class="text">Entrar</span>
+                        </a>
+                    </li>
+                    {% endif %} -->
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'user' %}">
+                            <span><i class="fa-solid fa-circle-user fa-xl icon"></i></span>
+                            <span class="text">Usúario</span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="/accounts/login">
+                            <span><i class="fa-solid fa-circle-user fa-xl icon"></i></span>
+                            <span class="text">Acessar</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a href="{% url 'registers' %}">
+                            <span><i class="fa-solid fa-table-list fa-xl icon"></i></span>
+                            <span class="text">Registros</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'about' %}">
+                            <span><i class="fa-solid fa-circle-question fa-xl icon"></i></span>
+                            <span class="text">Sobre</span>
+                        </a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="/admin/">
+                            <span><i class="fa-solid fa-gears fa-xl icon"></i></span>
+                            <span class="text">Admin</span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="/accounts/login/">
+                            <span><i class="fa-solid fa-gears fa-xl icon"></i></span>
+                            <span class="text">Admin</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'logout' %}">
+                            <span><i class="fa-solid fa-circle-xmark fa-xl icon"></i></span>
+                            <span class="text">Sair</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    {% block content %}
+    <div class="intro">
+        {% if user.is_authenticated %}
+        <div class="header-main">
+            <hgroup>
+                <h2>É hora de festejar !!</h2>
+                <h2>Muito bem vindo ao meu primeiro site com framework em Django!</h2>
+            </hgroup>
+            <div class="gif"><img src="{% static 'imgs/umaru-cheering.gif' %}" alt=""></div>
+        </div>
+        {% endif %}
+        <main>
+            <h1>Vamos fazer uma breve introdução acerca do que nos aguarda</h1>
+            <p>
+                1.0 - Temos um menu de navegação com uma intereção para que o usúario saiba onde está clicando ou com o mouse em cima.
+            </p>
+            <div class="contt-video">
+                <video class="video" src="{% static 'videos/menu-de-nav.mp4' %}" type="'video/mp4" width="50%" controls></video>
+                <button id="btn">Visualizar com um video de demostração</button>
+            </div>
+        </main>
+    </div>
+    {% endblock %}
+
+
+
+
+
+
+    <footer>
+        <div class="rodape">
+            <div class="social">
+                <div class="redes">
+                    <i class="fa-brands fa-github icon" style="color: #000;" title="Github"></i>
+                    <a href="https://github.com/EliasjSilva" target="_blank">Elias J. Silva</a>
+                </div>
+                <div class="redes">
+                    <i class="fa-regular fa-envelope icon" title="Email"></i>
+                    <span>Eliasj.Silva.pb@gmail.com</span>
+                </div>
+                <div class="redes">
+                    <i class="fa-brands fa-whatsapp icon" style="color: #0c0;" title="Whatsaap"></i>
+                    <span>+55 (83) 99419-5942</span>
+                </div>
+                <div class="redes">
+                    <i class="fa-brands fa-instagram icon" title="Instagram"></i>
+                    <a href="">Muito Social para Ter</a>
+                </div>
+                <div class="redes">
+                    <i class="fa-brands fa-square-facebook icon" style="color: #003694;" title="Facebook"></i>
+                    <a href="">Há muito tempo abadonado</a>
+                </div>
+            </div>
+            <div class="proj">
+                <p>
+                    Projeto criado por Elias J. Silva como resultado de conclusão do curso de Jovem Programador Apresentado pela Associação Beneficente São José (ABSJ) com a parceria da SUCESU.
+                    <br>
+                    Linguagens usadas - <i class="fa-brands fa-html5 icon" style="color: #ff7b00;" title="HTML"></i> <i class="fa-brands fa-css3-alt icon" style="color: #0058f0;" title="CSS"></i> <i class="fa-brands fa-python icon" style="color: #1b004d;" title="Python"></i>  com Framework em Django.
+                </p>
+                <p>
+                    Data de Inicio do Projeto : <strong>01 de Outubro de 2023</strong>
+                    <br>
+                    Data de Conclusão Projeto : <strong>04 de Novembro de 2023</strong>
+                </p>
+            </div>
+        </div>
+        <p>&copy; Codando até a madrugada </p>
+    </footer>
+
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/5739d31866.js" crossorigin="anonymous"></script>
+
+    <!-- JQueries -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <!-- Java Script -->
+    <script src="{% static 'js/javascript.js' %}"></script>
+    <script>
+        VanillaTilt.init(document.querySelectorAll(".gif"));
+    </script>
+</body>
+</html>

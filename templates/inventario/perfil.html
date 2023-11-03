@@ -1,0 +1,96 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block tittle %} Usúario {% endblock %}
+
+{% block content %}   
+<div class="perfil">
+    <div class="img"><img src="{% static 'imgs/user-none.svg' %}" alt=""></div>
+
+    <h2>Olá, {{ user }}</h2>
+    <div class="dashboard">
+        <div class="usuario-dashboard">
+            Dashboard do Usúario (analisando se é possível)
+            <!-- <span>{{ c }}</span> -->
+        </div>
+    </div>
+    
+    <div class="usuario-inve">
+        <div class="regist-list">
+            {% if not produto %}
+            <h2>* Sem Produtos para mostrar no momento. *</h2>
+            {% else %}            
+            <button type="button" onclick="user_produtos()"><h2>Produtos Cadastrados - {{ produto|length }}</h2></button>
+            <table id="user_produtos">
+                <tr>
+                    <th>Produto</th>
+                    <th>Criado</th>
+                    <th>Valor Total R$</th>
+                </tr>
+                {% for p in produto %}
+                <tr>
+                    <td>{{ p.produto }}</td>
+                    <td>{{ p.create }}</td>
+                    <td>R$ {{ p.valorTotal }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </div>
+    
+    
+    <div class="usuario-inve">
+        <div class="regist-list">
+            {% if not cliente %}
+            <h2>* Sem Clientes para mostrar no momento. *</h2>
+            {% else %}            
+
+            <button type="button" onclick="user_clientes()"><h2>Clientes Cadastrados - {{ cliente|length }}</h2></button>
+            <table id="user_clientes">
+                <tr>
+                    <th>Cliente</th>
+                    <th>Endereço</th>
+                    <th>Contato</th>
+                </tr>
+                {% for c in cliente %}
+                <tr>
+                    <td>{{ c.cliente }}</td>
+                    <td>{{ c.endereco }}</td>
+                    <td>{{ c.contato }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </div>
+
+    
+    <div class="usuario-inve">
+        <div class="regist-list">
+            {% if not inve %}
+            <h2>* Sem Registros para mostrar no momento. *</h2>
+            {% else %}            
+
+            <button type="button" onclick="user_inventarios()"><h2>Registros Salvos - {{ inve|length }}</h2></button>
+            <table id="user_inventarios">
+                <tr>
+                    <th>Cliente</th>
+                    <th>Produto</th>
+                    <th>Valor R$</th>
+                    <th>SubTotal R$</th>
+                </tr>
+                {% for i in inve %}
+                <tr>
+                    <td>{{ i.cliente }}</td>
+                    <td>{{ i.produto }}</td>
+                    <td>R$ {{ i.valorProdutos }}</td>
+                    <td>R$ {{ i.subTotal }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

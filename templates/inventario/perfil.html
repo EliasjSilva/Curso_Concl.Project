@@ -18,10 +18,10 @@
         <div class="usuario-inve">
             <div class="regist-list">
                 {% if not inve %}
-                <h2>* Sem Registros para mostrar no momento. *</h2>
+                <h2>Nenhum Registro Salvo</h2>
                 {% else %}            
     
-                <button type="button" onclick="user_inventarios()"><h2>Registros Salvos - {{ inve|length }}</h2></button>
+                <button type="button" onclick="user_inventarios()"><h2>{{ inve|length }} Registros Salvos </h2></button>
                 <table id="user_inventarios">
                     <tr>
                         <th>Cliente</th>
@@ -45,9 +45,9 @@
     <div class="usuario-inve">
         <div class="regist-list">
             {% if not produto %}
-            <h2>* Sem Produtos para mostrar no momento. *</h2>
+            <h2>Nenhum Produto Cadastrado</h2>
             {% else %}            
-            <button type="button" onclick="user_produtos()"><h2>Produtos Cadastrados - {{ produto|length }}</h2></button>
+            <button type="button" onclick="user_produtos()"><h2>{{ produto|length }} Produtos Cadastrados</h2></button>
             <table id="user_produtos">
                 <tr>
                     <th>Produto</th>
@@ -70,10 +70,10 @@
     <div class="usuario-inve">
         <div class="regist-list">
             {% if not cliente %}
-            <h2>* Sem Clientes para mostrar no momento. *</h2>
+            <h2>Nenhum Cliente Cadastrado</h2>
             {% else %}            
 
-            <button type="button" onclick="user_clientes()"><h2>Clientes Cadastrados - {{ cliente|length }}</h2></button>
+            <button type="button" onclick="user_clientes()"><h2>{{ cliente|length }} Clientes Cadastrados</h2></button>
             <table id="user_clientes">
                 <tr>
                     <th>Cliente</th>

@@ -41,10 +41,10 @@ def user(request):
 # # # CRUD # # #
 
 
-# CREATING
+# views.py
 @login_required
 def exisProduto(request):
-    form_Inve = forms.InventarioForm(request.POST or None, request.FILES)
+    form_Inve = forms.InventarioForm(request.POST or None, request.FILES, user=request.user)
 
     if form_Inve.is_valid():
         form_Inve = form_Inve.save(commit=False)

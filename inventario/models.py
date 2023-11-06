@@ -86,6 +86,8 @@ class Inventario(models.Model):
     def __str__(self):
         return str(self.valorProdutos)
 
+        
+
 
     # def clean_data(self):
     #     valores = self.clean_data['valor_p2']

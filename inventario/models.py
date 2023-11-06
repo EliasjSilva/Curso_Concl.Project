@@ -1,37 +1,5 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-# Create your models here.
-# from django.conf import settings
-
-# class Produto1(models.Model):
-
-#     produto1 = models.CharField(max_length=100)
-#     valorBase_P1 = models.DecimalField(max_digits=10, decimal_places=2, blank=True, default=1.70)
-#     valorTotal_P1 = models.DecimalField(max_digits=10, decimal_places=2, blank=True, default=0)
-#     create_P1 = models.DateField(auto_now_add=True)
-#     notes_P1 = models.TextField(blank=True, null=True)
-
-#     class Meta:
-#         ordering = ['valorTotal_P1']
-
-#     def __str__(self):
-#         return self.produto1
-
-
-# class Produto2(models.Model):
-
-#     produto2 = models.CharField(max_length=100)
-#     valorBase_P2 = models.DecimalField(max_digits=10, decimal_places=2, blank=True, default=1.70)
-#     valorTotal_P2 = models.DecimalField(max_digits=10, decimal_places=2, blank=True, default=0)
-#     create_P2 = models.DateField(auto_now_add=True)
-#     notes_P2 = models.TextField(blank=True, null=True)
-
-#     class Meta:
-#         ordering = ['valorTotal_P2']
-
-#     def __str__(self):
-#         return self.produto2
-
 
 class Produto(models.Model):
 
@@ -85,16 +53,6 @@ class Inventario(models.Model):
 
     def __str__(self):
         return str(self.valorProdutos)
-
-        
-
-
-    # def clean_data(self):
-    #     valores = self.clean_data['valor_p2']
-    #     if valores == '':
-    #         raise ValidationError('O campo não poder estar vazio.')
-    #     else:
-    #         return valores
     
     # # # CÁLCULO # # #
     def save(self, *args, **kwargs):

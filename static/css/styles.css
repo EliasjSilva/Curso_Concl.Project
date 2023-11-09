@@ -11,43 +11,75 @@ body {
     /* width: 100%; */
     /* margin: 0 auto; */
     background-color: #2284;
+    /* background-image: url('/static/imgs/f-bluePastel.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover; */
 }
 body .intro {
     width: 80%;
-    margin: 20px auto;
+    margin: 10px auto;
 }
 body .intro .header-main {
-    height: 80vh;
+    height: 100%;
+    background-color: #2286;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #2286;
+    border-radius: 20px;
+    width: 100%;
+    box-shadow: 1px 1px 10px #228;
+}
+body .intro h2, .intro h1{
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    font-size: 2.5em;
 }
 body hgroup {
     text-align: center;
     margin: 50px;
 }
-body .intro .gif, .contt-video {
+body .intro .contt-video {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 20px 0px;
 }
-body .intro main .video {
-    display: none;
-}
-body .intro .gif img:hover {
+body .intro .header-main > img:hover {
     transform: scale(1.1);
-    border-radius: 30%;
-    box-shadow: 1px 1px 5px #2288;
-    content: 'Entrar';
+    border-radius: 10%;
+    box-shadow: 1px 1px 5px #c2c2ff;
 }
-body .intro .gif img, .video {
+body .intro .header-main > img {
+    display: block;
+    margin: 10px auto;
+    border-radius: 5%;
+    width: 100%;
+    max-width: 500px;
+}
+body .intro #video {
     border-radius: 40%;
     width: 100%;
     max-width: 500px;
     box-shadow: 1px 1px 5px #228;
 }
-body .intro .video {
+body .intro main .contt-video #video {
     border-radius: 10px;
-    margin: 20px 0;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+}
+body .intro main .contt-video #video.show {
+    border-radius: 10px;
+    margin: 15px 0;
+    display: flex;
+    opacity: 1;
+    height: auto;
+    visibility: visible;
+    transition: 0.5s ease-in-out;
 }
 .intro main #btn {
     background-color: #2288;
@@ -66,7 +98,6 @@ body .intro .video {
 
 
 /* *** header *** */
-
 
 
 
@@ -611,7 +642,7 @@ header nav {
     flex-direction: column;
 }
 .sobre-global .sobre-cont .sobre {
-    background-color: #2288;
+    background-color: #2286;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #2286;
@@ -720,6 +751,11 @@ footer > p {
 
 @media screen and (max-width: 768px) {
 
+
+    
+    body .intro {
+        width: 90%;
+    }
     /* *** Nav *** */
     header nav {
         height: 100px;

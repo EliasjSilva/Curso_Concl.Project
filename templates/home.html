@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+    
     <header>
         <nav>
             <div class="nav-head">
@@ -65,15 +66,6 @@
                             <span class="text">Admin</span>
                         </a>
                     </li>
-                    {% else %}
-                    <li>
-                        <a href="/accounts/login/">
-                            <span><i class="fa-solid fa-gears fa-xl icon"></i></span>
-                            <span class="text">Admin</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% if user.is_authenticated %}
                     <li>
                         <a href="{% url 'logout' %}">
                             <span><i class="fa-solid fa-circle-xmark fa-xl icon"></i></span>
@@ -86,24 +78,28 @@
         </nav>
     </header>
 
+
+
+
+    
     {% block content %}
     <div class="intro">
         {% if user.is_authenticated %}
         <div class="header-main">
             <hgroup>
-                <h2>É hora de festejar !!</h2>
                 <h2>Muito bem vindo ao meu primeiro site com framework em Django!</h2>
+                <h2>É hora de festejar !!</h2>
             </hgroup>
-            <div class="gif"><img src="{% static 'imgs/umaru-cheering.gif' %}" alt=""></div>
+            <img class="gif" src="{% static 'imgs/umaru-cheering.gif' %}" alt="">
         </div>
         {% endif %}
         <main>
             <h1>Vamos fazer uma breve introdução acerca do que nos aguarda</h1>
             <p>
-                1.0 - Temos um menu de navegação com uma intereção para que o usúario saiba onde está clicando ou com o mouse em cima.
+                1.0 - Menu de navegação com intereção para que o usúario saiba onde está clicando ou com o mouse em cima.
             </p>
             <div class="contt-video">
-                <video class="video" src="{% static 'videos/menu-de-nav.mp4' %}" type="'video/mp4" width="50%" controls></video>
+                <video id="video" src="{% static 'videos/menu-de-nav.mp4' %}" type="'video/mp4" width="50%" controls></video>
                 <button id="btn">Visualizar com um video de demostração</button>
             </div>
         </main>

@@ -1,21 +1,33 @@
-var btn = document.querySelector('#btn');
-var video = document.querySelector('.video');
-        
-        
-btn.addEventListener('click', function(){
-    
-    if(video.style.display === 'flex') {
-        
-        video.style.display = 'none';
-        btn.textContent = 'Visualizar com um video de demostração.'
-        video.style.transition = 'height 2s'
 
-    }
+// JS
+const btn = document.getElementById('btn'); // Substitua 'seuBotao' pelo ID real do seu botão
+const video = document.getElementById('video'); // Substitua 'video' pelo ID real do seu elemento de vídeo
+
+btn.addEventListener('click', function() {
+    if (video.classList.contains('show')) {
+        video.classList.remove('show');
+        btn.textContent = 'Visualizar com um vídeo de demonstração.';
+    } 
     else {
-        video.style.display = 'flex';
-        btn.textContent = 'Entendi! Pode fechar.'
+        video.classList.add('show');
+        btn.textContent = 'Entendi! Pode fechar.';
     }
-})
+});
+
+// btn.addEventListener('click', function() {
+//   if (video.style.display === 'flex') {
+//       video.style.display = 'none';
+//       btn.textContent = 'Visualizar com um vídeo de demonstração.';
+//       video.style.transition = 'opacity ease-in-out 0.5s'; // Exemplo de transição de opacidade por 0.5 segundos
+//       video.style.opacity = '0'; // Define a opacidade para 0 durante a transição
+//   } 
+//   else {
+//       video.style.display = 'flex';
+//       btn.textContent = 'Entendi! Pode fechar.';
+//       video.style.transition = 'opacity ease-in-out 0.5s'; // Mesma transição ao reexibir
+//       video.style.opacity = '1'; // Define a opacidade de volta para 1
+//   }
+// });
 
 
 

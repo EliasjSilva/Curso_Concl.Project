@@ -10,31 +10,41 @@
     <h2>Olá, {{ user }}</h2>
     <div class="dashboard">
         <div class="usuario-dashboard">
-            Dashboard do Usúario (analisando se é possível)
+            <!-- Dashboard do Usúario (analisando se é possível) -->
+            <h2>Bem vindo a sua página de registros!</h2>
         </div>
     </div>
     
+    <!-- Mensagens do info -->
+    {% if messages %}
+    <ul class="alerta">
+        {% for m in messages %}
+        <li>{{ m }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
         
         <div class="usuario-inve">
             <div class="regist-list">
                 {% if not inve %}
                 <h2>Nenhum Registro Salvo</h2>
-                {% else %}            
+                {% else %}
+
     
                 <button type="button" onclick="user_inventarios()"><h2>{{ inve|length }} Registros Salvos </h2></button>
                 <table id="user_inventarios">
                     <tr>
-                        <th>Cliente</th>
-                        <th>Produto</th>
+                        <th>Nº do Registro</th>
                         <th>Valor R$</th>
                         <th>SubTotal R$</th>
+                        <th></th>
                     </tr>
                     {% for i in inve %}
                     <tr>
-                        <td>{{ i.cliente }}</td>
-                        <td>{{ i.produto }}</td>
+                        <td><a href="{% url 'registroView' id=i.id %}">Registro nº{{ i.id }}</a></td>
                         <td>R$ {{ i.valorProdutos }}</td>
-                        <td><a href="{% url 'registroView' id=i.id %}">R$ {{ i.subTotal }}</a></td>
+                        <td>R$ {{ i.subTotal }}</td>
+                        <td><a href="{% url 'registroDel' id=i.id %}"><i class="fa-solid fa-trash-can" style="color: #bd0000;"></i> Excluir</a></td>
                     </tr>
                     {% endfor %}
                 </table>

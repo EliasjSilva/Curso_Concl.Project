@@ -33,7 +33,14 @@ body .intro .header-main {
 body .intro h2, .intro h1{
     color: #fff;
     text-shadow: 1px 1px 2px #000;
-    font-size: 2.5em;
+    font-size: 2em;
+}
+
+body > .intro > .header-main > span {
+    display: block;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
 }
 body hgroup {
     text-align: center;
@@ -58,13 +65,16 @@ body .intro .header-main > img {
     width: 100%;
     max-width: 500px;
 }
-body .intro #video {
+body .intro .video {
     border-radius: 40%;
     width: 100%;
     max-width: 500px;
     box-shadow: 1px 1px 5px #228;
 }
-body .intro main .contt-video #video {
+body main {
+    margin: 50px 0;
+}
+body .intro main .contt-video .video {
     border-radius: 10px;
     opacity: 0;
     visibility: hidden;
@@ -72,7 +82,7 @@ body .intro main .contt-video #video {
     overflow: hidden;
     transition: 0.5s ease-in-out;
 }
-body .intro main .contt-video #video.show {
+body .intro main .contt-video .video.show {
     border-radius: 10px;
     margin: 15px 0;
     display: flex;
@@ -81,7 +91,7 @@ body .intro main .contt-video #video.show {
     visibility: visible;
     transition: 0.5s ease-in-out;
 }
-.intro main #btn {
+.intro main .btn {
     background-color: #2288;
     color: #fff;
     border: 1px solid #2286;
@@ -89,7 +99,7 @@ body .intro main .contt-video #video.show {
     padding: 5px 10px;
     border-radius: 10px;
 }
-.intro main #btn:hover {
+.intro main .btn:hover {
     background-color: #228a;
     box-shadow: 1px 1px 10px #008;
     border-radius: 15px;
@@ -340,10 +350,76 @@ header nav {
     text-decoration: underline;
 }
 
-/* *** Fieldsets *** */
+/* *** Perfil do cliente *** */
 
+.user {
+    width: 80%;
+    margin: 50px auto;
+}
+.user > h3 {
+    text-align: center;
+    font-size: 3em;
+    color: #fff;
+    text-shadow: 1px 1px 3px #000;
+    background-color: #2288;
+    padding: 10px;
+    border-radius: 5px;
+}
+.user > fieldset {
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #2288;
+    width: 100%;
+}
+.user > fieldset > legend {
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+.user > fieldset  legend::before {
+    content: '- '
+}
+.user > fieldset  label {
+    font-weight: 500;
+}
+.user > fieldset label::before  {
+    content: '• ';
+}
+.user > fieldset span{
+    display: block;
+    background-color: #C4C4DF;
+    margin: 10px 0 20px 0;
+    padding: 10px;
+    border-radius: 10px;
+}
 
+.user > fieldset > .item-value {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    justify-content: space-between;
+}
 
+.user > .links{
+    display: grid;
+    grid-template-columns: 31% 31% 31%;
+    justify-content: space-between;
+}
+.user > .links > a {
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: center;
+    background-color: #2288;
+    border: 3px solid #2286;
+    margin: 10px 0;
+    padding: 10px 0;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+}
+.user > .links > a:hover {
+    border-radius: 15px;
+    background-color: #2289;
+    border: 1px solid #2287;
+}
 
 
 
@@ -480,10 +556,6 @@ header nav {
     color: #111;
     text-decoration: none;
 }
-/* .regist .regist-list > table tr td:first-child:hover{
-    text-decoration: underline;
-    color: #000;
-} */
 .regist .regist-list > table tr td:first-child .icon{
     margin: 0 10px;
 }
@@ -836,14 +908,22 @@ footer > p {
     }
 
 
+    /* *** Perfil do cliente *** */
+
+.user {
+    width: 90%;
+}
+.user > fieldset > .item-value {
+    grid-template-columns: 1fr;
+}
 
 
     /* *** Formulários *** */
 
-    
-.conttBox .contt form .valor {
-    display: block;
-}
+        
+    .conttBox .contt form .valor {
+        display: block;
+    }
 
 
 

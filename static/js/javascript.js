@@ -1,17 +1,22 @@
+// Obtém todos os botões e vídeos
+const buttons = document.querySelectorAll('.btn');
+const videos = document.querySelectorAll('.video');
 
-// JS
-const btn = document.getElementById('btn'); // Substitua 'seuBotao' pelo ID real do seu botão
-const video = document.getElementById('video'); // Substitua 'video' pelo ID real do seu elemento de vídeo
+// Itera sobre cada botão
+buttons.forEach((button, index) => {
+    button.addEventListener('click', function() {
+        // Obtém o vídeo correspondente
+        const video = videos[index];
 
-btn.addEventListener('click', function() {
-    if (video.classList.contains('show')) {
-        video.classList.remove('show');
-        btn.textContent = 'Visualizar com um vídeo de demonstração.';
-    } 
-    else {
-        video.classList.add('show');
-        btn.textContent = 'Entendi! Pode fechar.';
-    }
+        // Alterna a classe 'show' no vídeo
+        if (video.classList.contains('show')) {
+            video.classList.remove('show');
+            button.textContent = 'Visualizar com um vídeo de demonstração.';
+        } else {
+            video.classList.add('show');
+            button.textContent = 'Entendi! Pode fechar.';
+        }
+    });
 });
 
 // btn.addEventListener('click', function() {

@@ -29,6 +29,8 @@ class ClienteForm(forms.ModelForm):
             if instance.cliente == cliente:
                 raise forms.ValidationError('Já tem um cliente com o nome ' + cliente)
         return cliente
+
+    
         
 class InventarioForm(forms.ModelForm):
     class Meta:

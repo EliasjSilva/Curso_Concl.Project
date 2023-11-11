@@ -5,43 +5,29 @@
 
 {% block content %}
 
-<h3>{{ cView.cliente }}</h3>
 <div class="user">
-    <fieldset>
-        <legend>Status:</legend>
-            <div class="user-content">
-                <label for=""><span>Experience:</span>
-
-                    {{ cView.observacoes }}
-                </label>
-            </div>
-    </fieldset>
-
-    <fieldset>
-        <legend>Personal Data:</legend>
-        <div class="user-content">
-            <label for=""><span>Phone:</span>
-
-                {{ cView.contato }}
-            </label>
-        </div>
-        <div class="user-content">
-            <label for=""><span>Endereço:</span>
-
-                {{ cView.endereco }}
-            </label>
-        </div>
-    </fieldset>
+    <h3>{{ cView.cliente }}</h3>
     
     <fieldset>
-        <legend>Links:</legend>
-        <div class="user-content">
-            <label for=""><span>Email:</span>
+        <legend>Dados Pessoais:</legend>
+        <label for="">Número de Telefone:</label>
+        <span>{{ cView.contato }}</span>
 
-                {{ cView.email }}
-            </label>
-        </div>
+        <label for="">Endereço:</label>
+        <span>{{ cView.endereco }}</span>
+
+        <label for="">E-mail:</label>
+        <span>{{ cView.email }}</span>
+
+        <label for="">Observações:</label>
+        <span>{{ cView.observacoes }}</span>
     </fieldset>
+
+    <div class="links">
+        <a href="{% url 'clienteEdit' id=cView.id %}">Editar</a>
+        <a href="{% url 'clienteDel' id=cView.id %}">Excluir</a>
+        <a href="{% url 'user' %}">Voltar</a>
+    </div>
 </div>
 
 {% endblock %}

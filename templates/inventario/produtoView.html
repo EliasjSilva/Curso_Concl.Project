@@ -5,10 +5,30 @@
 
 {% block content %}
 
-{{ pView.produto }}
-{{ pView.valorBase }}
-{{ pView.valorTotal }}
-{{ pView.create }}
-{{ pView.notes }}
 
+<div class="user">
+    <h3>{{ pView.produto }}</h3>
+    
+    <fieldset>
+        <legend>Informações do Produto:</legend>
+        
+        <label for="">Valor Total Faturado:</label>
+        <span>{{ pView.valorTotal }}</span>
+
+        <label for="">Valor Base deste Produto:</label>
+        <span>{{ pView.valorBase }}</span>
+
+        <label for="">Adicionado:</label>
+        <span>{{ pView.create }}</span>
+
+        <label for="">Observações:</label>
+        <span>{{ pView.notes }}</span>
+    </fieldset>
+
+    <div class="links">
+        <a href="{% url 'produtoEdit' id=pView.id %}">Editar</a>
+        <a href="{% url 'produtoDel' id=pView.id %}">Excluir</a>
+        <a href="{% url 'user' %}">Voltar</a>
+    </div>
+</div>
 {% endblock %}

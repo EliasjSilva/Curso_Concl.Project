@@ -41,7 +41,6 @@ def user(request):
 # # # CRUD # # #
 
 
-# views.py
 @login_required
 def exisProduto(request):
     form_Inve = forms.InventarioForm(request.POST or None, request.FILES, user=request.user)
@@ -126,3 +125,91 @@ def produtoView(request, id):
 def registroView(request, id):
     iView = models.Inventario.objects.get(id=id)
     return render(request, 'inventario/registroView.html', {'iView':iView})
+
+
+
+# UPDATING
+@login_required
+def clienteEdit(request, id):
+    cEdit = models.Cliente.objects.get(id=id)
+
+    if request.method == 'POST':
+        form_Cliente = forms.ClienteForm(request.POST, request.FILES, instance=cEdit)
+        if form_Cliente.is_valid():
+            form_Cliente = form_Cliente.save(commit=False)
+            form_Cliente.user = request.user
+            form_Cliente.save()
+
+            messages.info(request, 'Cliente Editado com Sucesso!')
+            return redirect('user')
+    else:
+        form_Cliente = forms.ClienteForm(instance=cEdit)
+
+    return render(request, 'inventario/addCliente.html', {'cliente': form_Cliente})
+
+
+# UPDATING
+@login_required
+def produtoEdit(request, id):
+    pEdit = models.Produto.objects.get(id=id)
+
+    if request.method == 'POST':
+        form_Produto = forms.ProdutoForm(request.POST, request.FILES, instance=pEdit)
+        if form_Produto.is_valid():
+            form_Produto = form_Produto.save(commit=False)
+            form_Produto.user = request.user
+            form_Produto.save()
+
+            messages.info(request, 'Produto Editado com Sucesso!')
+            return redirect('user')
+    else:
+        form_Produto = forms.ProdutoForm(instance=pEdit)
+
+    return render(request, 'inventario/addProduto.html', {'produto': form_Produto})
+
+
+
+
+    # UPDATING
+@login_required
+def registroEdit(request, id):
+    iEdit = models.Inventario.objects.get(id=id)
+
+    if request.method == 'POST':
+        form_Registro = forms.InventarioForm(request.POST, request.FILES, instance=iEdit)
+        if form_Registro.is_valid():
+            form_Registro = form_Registro.save(commit=False)
+            form_Registro.user = request.user
+            form_Registro.save()
+
+            messages.info(request, 'Registro Editado com Sucesso!')
+            return redirect('user')
+    else:
+        form_Registro = forms.InventarioForm(instance=iEdit)
+
+    return render(request, 'inventario/exisProduto.html', {'registrar': form_Registro})
+
+
+
+
+@login_required
+def clienteDel(request, id):
+    remove = models.Cliente.objects.get(id=id)
+    remove.delete()
+    messages.info(request, 'Cliente e Pertencentes Deletado Sem Problemas!')
+    return redirect('user')
+
+@login_required
+def produtoDel(request, id):
+    remove = models.Produto.objects.get(id=id)
+    remove.delete()
+    messages.info(request, 'Produto e Pertencentes Deletado Sem Problemas!')
+    return redirect('user')
+
+@login_required
+def registroDel(request, id):
+    remove = models.Inventario.objects.get(id=id)
+    remove.delete()
+    messages.info(request, 'Registro Deletado Sem Problemas!')
+    return redirect('user')
+

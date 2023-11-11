@@ -91,17 +91,64 @@
                 <h2>É hora de festejar !!</h2>
             </hgroup>
             <img class="gif" src="{% static 'imgs/umaru-cheering.gif' %}" alt="">
+            <span>* Site desenvolvido para ajudar a registrar serviços feitos diariamente a fim de automatizar processos e otimizar o tempo. *</span>
         </div>
         {% endif %}
         <main>
-            <h1>Vamos fazer uma breve introdução acerca do que nos aguarda</h1>
+            <h2>Vamos fazer uma breve introdução acerca do que nos aguarda!</h2>
             <p>
                 1.0 - Menu de navegação com intereção para que o usúario saiba onde está clicando ou com o mouse em cima.
             </p>
             <div class="contt-video">
-                <video id="video" src="{% static 'videos/menu-de-nav.mp4' %}" type="'video/mp4" width="50%" controls></video>
-                <button id="btn">Visualizar com um video de demostração</button>
+                <video class="video" src="{% static 'videos/menu-de-nav.mp4' %}" type="'video/mp4" width="50%" controls></video>
+                <button class="btn">Visualizar com um video de demostração</button>
             </div>
+            <p>
+                2.0 - Acessando poderemo obter mais conteudos como Adicionar Registros, Página de Usuário, Excluir e Editar cadastros.
+            </p>
+            <p>
+                2.1 - Na aba de Usuários é Possivel obter todos os serviços cadastrados, bem como uma contagem de quantidade para facilitar na hora de contar. 😄
+                <br>
+                Possui 3 abas inicialmente fechadas:
+                <ul>
+                    <li>Registros</li>
+                    <li>Produtos</li>
+                    <li>Clientes</li>
+                </ul>
+                Clicando em cima delas, caso possua algum serviço cadastrado, irá mostrar conforma a aba for clicada.
+                <br>
+                Dentro de cada aba há um link levando para cada item com uma melhor descrição o item cadastrado, pssibilitando editar ou excluir.
+                <br>
+                <br>
+                ⚠ *OBS: Na guia de Registros é possivel excluir diretamente estando na aba Usuário. Ao Excluir algum item da guia produto ou cliente consequentemnete exluirá os serviços relacionados ao a ele mesmo. 
+            </p>
+            <div class="contt-video">
+                <video class="video" src="{% static 'videos/exemplo2.mp4' %}" type="'video/mp4" width="50%" controls></video>
+                <button class="btn">Visualizar com um video de demostração</button>
+            </div>
+            <p>
+                3.0 - Na aba Registros podemos adicionar nossos serviço que irão aparecer os registros mais recentes que adicionamos para visualização. 
+                <br>
+                É possivel filtar por data, caso não esteja achando algum especifico.
+            </p>
+            <p>
+                3.1 - Na guia Adicionar Novo Registros é possivel Cadastrar Clientes, Produtos e Registrar um Inventário.
+                <br>
+                <br>
+                ⚠ *OBS: Para registar um novo Inventário é necessário ao menos um produto e um cliente já cadastrado para ser selecionado.
+            </p>
+            <div class="contt-video">
+                <video class="video" src="{% static 'videos/exemplo3.mp4' %}" type="'video/mp4" width="50%" controls></video>
+                <button class="btn">Visualizar com um video de demostração</button>
+            </div>
+            <p>
+                4.0 - Na aba Sobre tem as informações sobre o criador do site.
+            </p>
+            <p>
+                5.0 - Na aba Admin é onde possui as engrenagens que fazem rodar o plano de negócios que apenas o Administrador ou quem estiver autorizado poderá acessar. 😉
+            </p>
+
+
         </main>
     </div>
     {% endblock %}
@@ -144,7 +191,7 @@
                 <p>
                     Data de Inicio do Projeto : <strong>01 de Outubro de 2023</strong>
                     <br>
-                    Data de Conclusão Projeto : <strong>04 de Novembro de 2023</strong>
+                    Data de Conclusão Projeto : <strong>11 de Novembro de 2023</strong>
                 </p>
             </div>
         </div>

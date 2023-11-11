@@ -5,14 +5,59 @@
 
 {% block content %}
 
-{{ iView.produto }}
-{{ iView.cliente }}
-{{ iView.valor_p1 }}
-{{ iView.valor_p2 }}
-{{ iView.valorProdutos }}
-{{ iView.subTotal }}
-{{ iView.combustivel }}
-{{ iView.create_at }}
-{{ iView.notes }}
+<div class="user">
+    <h3> Registro nº {{ iView.id }}</h3>
+    
+    <fieldset>
+        <legend>Informações dos Valores:</legend>
+        <div class="item-value">
+            <div class="item1">
+                <label for="">Nome do Cliente:</label>
+                <span>{{ iView.cliente }}</span>
+            </div>
+            <div class="item1">
+                <label for="">Nome do Produto:</label>
+                <span>{{ iView.produto }}</span>
+            </div>
+        </div>
 
+        <div class="item-value">
+            <div class="item1">
+                <label for="">Valor 1:</label>
+                <span>R$ {{ iView.valor_p1 }}</span>
+            </div>
+            <div class="item1">
+                <label for="">Valor 2:</label>
+                <span>R$ {{ iView.valor_p2 }}</span>
+            </div>
+        </div>
+        <div class="item-value">
+            <div class="item1">
+                <label for="">Soma dos Produtos:</label>
+                <span>R$ {{ iView.valorProdutos }}</span>
+            </div>
+            
+            <div class="item1">
+                <label for="">Combustivel:</label>
+                <span>R$ {{ iView.combustivel }}</span>
+            </div>
+        </div>
+
+        <label for="">Valor Somado dos Produtos Multiplicado pelo Valor Base do Produto:</label>
+        <span>R$ {{ iView.subTotal }}</span>
+
+        <label for="">Adicionado:</label>
+        <span>{{ iView.create_at }}</span>
+
+        <label for="">Observações:</label>
+        <span>{{ iView.notes }}</span>
+    </fieldset>
+
+    <div class="links">
+        <a href="{% url 'registroEdit' id=iView.id %}">Editar</a>
+        <a href="{% url 'registroDel' id=iView.id %}">Excluir</a>
+        <a href="{% url 'user' %}">Voltar</a>
+    </div>
+    
+</div>
 {% endblock %}

@@ -40,7 +40,7 @@ def user(request):
 
 # # # CRUD # # #
 
-
+# CREATING
 @login_required
 def exisProduto(request):
     form_Inve = forms.InventarioForm(request.POST or None, request.FILES, user=request.user)
@@ -137,7 +137,6 @@ def clienteEdit(request, id):
         form_Cliente = forms.ClienteForm(request.POST, request.FILES, instance=cEdit)
         if form_Cliente.is_valid():
             form_Cliente = form_Cliente.save(commit=False)
-            form_Cliente.user = request.user
             form_Cliente.save()
 
             messages.info(request, 'Cliente Editado com Sucesso!')
@@ -157,7 +156,6 @@ def produtoEdit(request, id):
         form_Produto = forms.ProdutoForm(request.POST, request.FILES, instance=pEdit)
         if form_Produto.is_valid():
             form_Produto = form_Produto.save(commit=False)
-            form_Produto.user = request.user
             form_Produto.save()
 
             messages.info(request, 'Produto Editado com Sucesso!')
@@ -173,13 +171,13 @@ def produtoEdit(request, id):
     # UPDATING
 @login_required
 def registroEdit(request, id):
-    iEdit = models.Inventario.objects.get(id=id)
+    iEdit = get_object_or_404(models.Inventario, id=id)
 
     if request.method == 'POST':
-        form_Registro = forms.InventarioForm(request.POST, request.FILES, instance=iEdit)
+        form_Registro = forms.InventarioForm(request.POST, request.FILES, instance=iEdit, user=request.user)
         if form_Registro.is_valid():
-            form_Registro = form_Registro.save(commit=False)
-            form_Registro.user = request.user
+            form_Registro.instance.user = request.user
+
             form_Registro.save()
 
             messages.info(request, 'Registro Editado com Sucesso!')

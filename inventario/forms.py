@@ -39,11 +39,42 @@ class InventarioForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
-        super().__init__(*args, **kwargs)
+        super(InventarioForm, self).__init__(*args, **kwargs)
 
         # Filtrar produtos e clientes apenas para o usuário logado
-        self.fields['produto'].queryset = models.Produto.objects.filter(user=user)
-        self.fields['cliente'].queryset = models.Cliente.objects.filter(user=user)
+        
+        # Verifica se a instância já foi associada ao formulário
+        if self.instance.pk:
+            # Filtra produtos e clientes apenas para o usuário logado
+            self.fields['produto'].queryset = models.Produto.objects.filter(user=self.instance.user)
+            self.fields['cliente'].queryset = models.Cliente.objects.filter(user=self.instance.user)
+        else:
+            # Se a instância não foi associada, mantenha o queryset vazio
+            self.fields['produto'].queryset = models.Produto.objects.filter(user=user)
+            self.fields['cliente'].queryset = models.Cliente.objects.filter(user=user)
+
+
+
+# class InventarioForm(forms.ModelForm):
+#     class Meta:
+#         model = models.Inventario
+#         fields = ['produto', 'cliente', 'valor_p1', 'valor_p2', 'valorProdutos', 'subTotal', 'combustivel', 'notes']
+
+#     def __init__(self, *args, **kwargs):
+#         user = kwargs.pop('user', None)
+#         super().__init__(*args, **kwargs)
+
+#         # Filtrar produtos e clientes apenas para o usuário logado
+#         self.fields['produto'].queryset = models.Produto.objects.filter(user=user)
+#         self.fields['cliente'].queryset = models.Cliente.objects.filter(user=user)
+
+#      # Adicione o seguinte para personalizar a exibição do widget se necessário
+#     def __init__(self, *args, **kwargs):
+#         super(InventarioForm, self).__init__(*args, **kwargs)
+#         self.fields['produto'].queryset = models.Produto.objects.filter(user=self.user)
+#         self.fields['cliente'].queryset = models.Cliente.objects.filter(user=self.user)
+
+
     # def clean_Value1(self):
     #     value1 = self.cleaned_data.get('valor_p1')
     #     if (value1 == ''):

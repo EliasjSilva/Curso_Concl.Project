@@ -53,13 +53,40 @@ class Inventario(models.Model):
 
     def __str__(self):
         return str(self.valorProdutos)
-    
-    # # # CÁLCULO # # #
-    def save(self, *args, **kwargs):
 
-        self.valorProdutos += self.valor_p1 + self.valor_p2
-        self.subTotal += (self.valor_p1 + self.valor_p2) * self.produto.valorBase
-        self.produto.valorTotal += self.subTotal
+
+    # # # Lógica de Cálculo # # #
+
+    def save(self, *args, **kwargs):
+        
+        # # Calcula os novos valores
+        # novo_valor_produtos = self.valor_p1 + self.valor_p2
+        # novo_subtotal = novo_valor_produtos * self.produto.valorBase
+
+
+        if not self.id:  # Nova instância
+            self.valorProdutos += self.valor_p1 + self.valor_p2
+
+            self.subTotal += (self.valor_p1 + self.valor_p2) * self.produto.valorBase
+
+            self.produto.valorTotal += self.subTotal
+            self.produto.save()
+        else: # Instância existente (edição)
+
+            # Subtrai os valores antigos antes de adicionar os novos
+            self.valorProdutos -= self.valor_p1 + self.valor_p2
+            self.subTotal -= (self.valor_p1 + self.valor_p2) * self.produto.valorBase
+
+            # Atualiza o valorTotal do Produto
+            self.produto.valorTotal += self.subTotal
+            self.produto.save()
+        # Salva as alterações
+        return super(Inventario, self).save(*args, **kwargs)
+
+
+    def delete(self, *args, **kwargs):
+        # Subtrai os valores antes de excluir
+        self.produto.valorTotal -= self.subTotal
         self.produto.save()
 
-        return super(Inventario, self).save(*args, **kwargs)
+        return super(Inventario, self).delete(*args, **kwargs)

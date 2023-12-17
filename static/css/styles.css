@@ -11,6 +11,7 @@ body {
     /* width: 100%; */
     /* margin: 0 auto; */
     background-color: #2284;
+    min-width: 375px;
     /* background-image: url('/static/imgs/f-bluePastel.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -44,7 +45,7 @@ body > .intro > .header-main > span {
 }
 body hgroup {
     text-align: center;
-    margin: 50px;
+/*     margin: 50px; */
 }
 body .intro .contt-video {
     display: flex;
@@ -233,6 +234,7 @@ header nav {
 .entrar .login input[type=submit], .conttBox .contt form  input[type=submit] {
     color: #000;
     width: 30%;
+    min-width: 200px;
     margin: 20px auto;
     height: 40px;
     text-align: center;
